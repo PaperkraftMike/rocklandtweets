@@ -28,8 +28,9 @@
             %h1 Rockland Tweets
             %p.lead Welcome to Rockland Tweets. Click your town and see what's happening on Twitter
           %div
-            = Twitter.search("rockland county", count: 10, result_type: "recent").results.map do |status| |
-                "#{status.from_user}: #{status.text}"                                                             |
-              end                                                                                                 |
+            -@search.each do |status| 
+            =status.inspect                                                                   
+            ="#{status.from_user}: #{status.text}"                                                            
+            end              
     %script{:src => "http://code.jquery.com/jquery.js"}
     %script{:src => "js/bootstrap.min.js"}
