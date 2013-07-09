@@ -11,7 +11,7 @@
         .span2
           / Sidebar content
           %h1 Towns
-          .towns
+          .towns 
             %i.icon-map-marker
             %a{:href => "#"} Ramapo
             %i.icon-map-marker
@@ -28,9 +28,11 @@
             %h1 Rockland Tweets
             %p.lead Welcome to Rockland Tweets. Click your town and see what's happening on Twitter
           %div
-            -@search.each do |status| 
-            =status.inspect                                                                   
-            ="#{status.from_user}: #{status.text}"                                                            
-            end              
+            -@search.results.each do |status|                                                                    
+              ="#{status.from_user} Tweeted:"
+              =" #{status.text} on #{status.created_at}" 
+              %br
+              %br
+
     %script{:src => "http://code.jquery.com/jquery.js"}
     %script{:src => "js/bootstrap.min.js"}
