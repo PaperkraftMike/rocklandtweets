@@ -5,10 +5,10 @@ require 'twitter-text'
 include Twitter::Autolink
 
 Twitter.configure do |config|
-  config.consumer_key = "icuRhowpxFhNAlk418ZvA"
-  config.consumer_secret = "JqJ3x6YNBuzCttixmvnxHZ4XtOzJkK0Nna91pNDPQA"
-  config.oauth_token = "18829543-yUNWrIn3z0HaiEAo1D8PHBWRmRxWaX8MfbnSosFp4"
-  config.oauth_token_secret = "5CeCXHzrpW8b7nPl4ncWZGW1oZVpZG2YMslFO2dE"
+  config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+  config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+  config.oauth_token = ENV['TWITTER_OAUTH_TOKEN']
+  config.oauth_token_secret = ENV['TWITTER_OAUTH_TOKEN_SECRET']
 end
                 
 
@@ -43,7 +43,7 @@ get '/haverstraw' do
 end
 
 get '/search' do
-  @search_search = Twitter.search(params[:input], count: 10, result_type: "recent")
+  @search_search = Twitter.search(params[:input] + " rockland county", count: 10, result_type: "recent")
   haml :search
 end
 
