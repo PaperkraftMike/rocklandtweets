@@ -1,6 +1,6 @@
 %h3 Here's what's tweeting in Rockland right now
 
--@search.results.each do |status|                                                                   
+-@search_search.results.each do |status|                                                                   
   =auto_link("@#{status.from_user} Tweeted:")
   %br
   =auto_link("#{status.text}") 
@@ -8,4 +8,3 @@
   ="on #{status.created_at.strftime("%B %d, %Y")} at #{status.created_at.strftime("%I:%M %P")}" 
   %br
   %br
-

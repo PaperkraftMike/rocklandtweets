@@ -1,0 +1,38 @@
+!!!
+%html
+  %head
+    %title Rockland Tweets
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    / Bootstrap
+    %link{:href => "css/bootstrap.min.css", :media => "screen", :rel => "stylesheet"}/
+  %body
+    .container-fluid
+      .row-fluid
+        .span2
+          / Sidebar content
+          %h1 Towns
+          %ul
+            %li 
+              %a{:href => "/ramapo"} Ramapo
+            %li
+              %a{:href => "/nyack"} Nyack
+            %li
+              %a{:href => "/orangetown"} Orangetown
+            %li
+              %a{:href => "/stony_point"} Stony Point
+            %li
+              %a{:href => "/haverstraw"} Haverstraw
+        .span10
+          / Body content
+          .hero-unit
+            %a{:href => "/index"}
+              %h1 Rockland Tweets
+            %p.lead Welcome to Rockland Tweets. Click your town and see what's happening on Twitter
+          %div
+            =yield
+          %h3 Didn't find what you're looking for? Search below to find what you want about Rockland.
+          %form.form-search{:action => "/search", :method => "get"}/
+          %input.input-medium.search-query{:type => "text", :name => "input", :placeholder => "Rockland County"}/ 
+          %button.btn{:type => "submit"} Search 
+          %br
+          %br
