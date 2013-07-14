@@ -22,6 +22,23 @@
               %a{:href => "/stony_point"} Stony Point
             %li
               %a{:href => "/haverstraw"} Haverstraw
+          %h3 Login
+          %form.form-horizontal
+          .control-group
+            %label.control-label{:for => "inputEmail"} Email
+            .controls
+              %input.loginform{:placeholder => "Text input", :type => "text"}/
+          .control-group
+            %label.control-label{:for => "inputPassword"} Password
+            .controls
+              %input.loginform{:placeholder => "Text input", :type => "text"}/
+          .control-group
+            .controls
+              %label.checkbox
+                %input{:type => "checkbox"}/
+                Remember me
+              %button.btn{:type => "submit"} Sign in
+
         .span10
           / Body content
           .hero-unit
@@ -32,7 +49,7 @@
             =yield
           %h3 Didn't find what you're looking for? Search below to find what you want about Rockland.
           %form.form-search{:action => "/search", :method => "get"}/
-          %input.input-medium.search-query{:type => "text", :name => "input", :placeholder => "Rockland County"}/ 
+          %input.input-medium.search-query{:type => "text", :name => "input",  :placeholder => "Rockland County"}/ 
           %button.btn{:type => "submit"} Search 
           %br
           %br

@@ -2,7 +2,26 @@ require 'twitter'
 require 'sinatra'
 require 'haml'
 require 'twitter-text'
+require 'sinatra/activerecord'
+require 'omniauth-twitter'
 include Twitter::Autolink
+set :database, "sqlite3:///users.sqlite3"
+require './models'
+
+use OmniAuth::Builder do 
+  provider :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET']
+end
+
+configure do 
+  enable :sessions
+end
+
+helpers do 
+  def admin?
+    session[:admin] 
+  end
+end
+
 
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
@@ -10,7 +29,15 @@ Twitter.configure do |config|
   config.oauth_token = ENV['TWITTER_OAUTH_TOKEN']
   config.oauth_token_secret = ENV['TWITTER_OAUTH_TOKEN_SECRET']
 end
-                
+
+get '/login' do
+  redirect to ('/auth/twitter')
+end
+
+get '/auth/twitter/callback' do
+  session[:admin] = true
+  env['omniauth.auth']
+end
 
 get '/index' do
 	@search = Twitter.search("rockland county", count: 10, result_type: "recent")  
