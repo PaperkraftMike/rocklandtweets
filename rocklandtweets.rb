@@ -36,9 +36,9 @@ end
 
 get '/auth/twitter/callback' do
   session[:admin] = true
-  session[:username] = env['omniauth.auth']['info']['name']
-  session[:picture] = env['omniauth.auth']['info']['image']
-  session[:location] = env['omniauth.auth']['info']['location']
+  session[:username] = env['omniauth.auth']['info'].nickname
+  session[:picture] = env['omniauth.auth']['info'].image
+  session[:location] = env['omniauth.auth']['info'].location
   redirect to ('/loggedin')
 end
 
