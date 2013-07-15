@@ -36,7 +36,20 @@ end
 
 get '/auth/twitter/callback' do
   session[:admin] = true
-  env['omniauth.auth']
+  session[:username] = env['omniauth.auth']['info']['name']
+  session[:picture] = env['omniauth.auth']['info']['image']
+  session[:location] = env['omniauth.auth']['info']['location']
+  redirect to ('/loggedin')
+end
+
+
+get '/loggedin' do
+  @user_search = Twitter.search(session[:location], count: 10, result_type: "recent")
+  haml :loggedin
+end
+
+get '/auth/failure' do
+  params[:message]
 end
 
 get '/index' do
