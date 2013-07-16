@@ -26,7 +26,25 @@
           %h1 Find out what's tweeting in your town
           %a{:href => "/login"}
             %img#twitter-signin{:src => "/img/sign-in-with-twitter-gray.png"}/
+            %a{:href => "/signup"}
+              %h4 Create a new account
             %br/
+          %h3 Login 
+          %form.form-horizontal
+          .control-group
+            %label.control-label{:for => "inputEmail"} Email
+            .controls
+              %input.loginform{:placeholder => "Emaill Address", :type => "text"}/
+          .control-group
+            %label.control-label{:for => "inputPassword"} Password
+            .controls
+              %input.loginform{:placeholder => "Password", :type => "password"}/
+          .control-group
+            .controls
+              %label.checkbox
+                %input{:type => "checkbox"}/
+                Remember me
+              %button.btn{:type => "submit"} Sign In
         .span10
           / Body content
           .hero-unit
