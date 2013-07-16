@@ -54,7 +54,7 @@ get '/auth/failure' do
   params[:message]
 end
 
-get '/index' do
+get '/' do
 	@search = Twitter.search("rockland county", count: 10, result_type: "recent")  
   haml :index
 end
