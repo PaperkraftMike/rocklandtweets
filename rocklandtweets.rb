@@ -6,7 +6,6 @@ require 'twitter-text'
 require 'sinatra/activerecord'
 require 'omniauth-twitter'
 include Twitter::Autolink
-set :database, "sqlite3:///users.sqlite3"
 require './models'
 
 use OmniAuth::Builder do 
