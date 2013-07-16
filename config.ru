@@ -1,2 +1,2 @@
-require './rocklandtweets.rb'
+require './rocklandtweets'
 run Sinatra::Application

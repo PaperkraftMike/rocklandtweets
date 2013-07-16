@@ -1,3 +1,4 @@
+require 'ruby gems'
 require 'twitter'
 require 'sinatra'
 require 'haml'
@@ -46,7 +47,7 @@ end
 
 get '/loggedin' do
   @user_search = Twitter.search(session[:location], count: 10, result_type: "recent")
-  
+
   haml :loggedin
 end
 
