@@ -1,4 +1,4 @@
-require 'ruby gems'
+require 'rubygems'
 require 'twitter'
 require 'sinatra'
 require 'haml'
