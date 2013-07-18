@@ -4,7 +4,7 @@
     %title Rockland Tweets
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     / Bootstrap
-    %link{:href => "css/bootstrap.min.css", :media => "screen", :rel => "stylesheet"}/
+    %link{:href => "/css/bootstrap.min.css", :media => "screen", :rel => "stylesheet"}/
   %body
     .container-fluid
       .row-fluid
@@ -22,29 +22,27 @@
               %a{:href => "/stony_point"} Stony Point
             %li
               %a{:href => "/haverstraw"} Haverstraw
+            %li
+              %a{:href => "/clarkstown"} Clarkstown
         
           %h1 Find out what's tweeting in your town
           %a{:href => "/login"}
             %img#twitter-signin{:src => "/img/sign-in-with-twitter-gray.png"}/
-            %a{:href => "/signup"}
+            %a{:href => "/users/signup"}
               %h4 Create a new account
             %br/
           %h3 Login 
-          %form.form-horizontal
+          %form.form-horizontal{:action => "/sign_in", :method => "post"}
           .control-group
-            %label.control-label{:for => "inputEmail"} Email
+            %label.control-label{:name => "email"} Email
             .controls
-              %input.loginform{:placeholder => "Emaill Address", :type => "text"}/
+              %input.loginform{:type => "text", :name => "email"}
           .control-group
-            %label.control-label{:for => "inputPassword"} Password
+            %label.control-label{:name => "password"} Password
             .controls
-              %input.loginform{:placeholder => "Password", :type => "password"}/
+              %input.loginform{:type => "password", :name => "password"}
           .control-group
-            .controls
-              %label.checkbox
-                %input{:type => "checkbox"}/
-                Remember me
-              %button.btn{:type => "submit"} Sign In
+            %button.btn{:type => "submit"} Sign In
         .span10
           / Body content
           .hero-unit

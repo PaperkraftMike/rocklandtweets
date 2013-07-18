@@ -1,0 +1,11 @@
+%h3 Clarkstown
+
+-@clarkstown_search.results.each do |status|
+  %img{:src => "#{status.profile_image_url}"}                                                                     
+  =auto_link("@#{status.from_user} Tweeted:")
+  %br
+  =auto_link("#{status.text}") 
+  %br 
+  ="on #{status.created_at.strftime("%B %d, %Y")} at #{status.created_at.strftime("%I:%M %P")}" 
+  %br
+  %br
